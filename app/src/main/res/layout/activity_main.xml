@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="300dp"
         android:layout_marginTop="30dp"
-        android:text="Button" />
+        android:text="嘟嘟嘟" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp"
-            android:text="Button" />
+            android:text="啦啦啦" />
     </ScrollView>
 
 </LinearLayout>
