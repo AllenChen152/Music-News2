@@ -3,14 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/drawable/ic_baseline_data_usage_24.xml" value="0.269" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.269" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.269" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.269" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/drawable/shape.xml" value="0.269" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/drawable/shape1.xml" value="0.269" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/activity_hotlist.xml" value="0.33" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/activity_main1.xml" value="0.3026041666666667" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/activity_newsdetail.xml" value="0.33" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/activity_person.xml" value="0.33" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/fragment_home.xml" value="0.3171875" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/main.xml" value="0.33" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/nav_header.xml" value="0.3255718954248366" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/news_list.xml" value="0.31781045751633985" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/layout/one.xml" value="0.33" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2703125" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/menu/main.xml" value="0.2703125" />
+        <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/menu/menu.xml" value="0.2703125" />
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/menu/toolbar.xml" value="0.33" />
         <entry key="..\:/android-workspace/Music-News2/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
       </map>
