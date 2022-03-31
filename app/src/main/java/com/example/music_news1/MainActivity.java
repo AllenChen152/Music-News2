@@ -1,5 +1,6 @@
 package com.example.music_news1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity {
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private ViewPager viewPager;
-    private TextView textView3,textView1;
+    private TextView textView3,textView1,textView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class MainActivity extends BaseActivity {
 
         textView3=(TextView)findViewById(R.id.textview3);
         textView1=(TextView)findViewById(R.id.textview1);
+        textView2=(TextView)findViewById(R.id.textview2);
         textView3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent1 = new Intent(MainActivity.this, HotList.class);
@@ -56,6 +58,12 @@ public class MainActivity extends BaseActivity {
         textView1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent1 = new Intent(MainActivity.this, quanzi.class);
+                startActivity(intent1);
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent1 = new Intent(MainActivity.this, PersonActivity.class);
                 startActivity(intent1);
             }
         });
@@ -89,6 +97,7 @@ public class MainActivity extends BaseActivity {
             //设置Indicator来添加一个点击图标（默认图标是一个返回的箭头）
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+
 
     }
 
