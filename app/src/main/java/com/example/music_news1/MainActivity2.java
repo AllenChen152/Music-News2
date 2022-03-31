@@ -1,11 +1,11 @@
 package com.example.music_news1;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
@@ -13,57 +13,56 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.BaseActivity;
-import com.google.android.material.navigation.NavigationView;
-
-import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity2 extends BaseActivity  {
 
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private ViewPager viewPager;
     private TextView textView3,textView1,textView2;
+    private ImageButton imageButton5,imageButton6,imageButton7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
 
         textView3=(TextView)findViewById(R.id.textview3);
         textView1=(TextView)findViewById(R.id.textview1);
         textView2=(TextView)findViewById(R.id.textview2);
         textView3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent1 = new Intent(MainActivity.this, HotList.class);
+                Intent intent1 = new Intent(MainActivity2.this, HotList.class);
                 startActivity(intent1);
             }
         });
 
-        textView1.setOnClickListener(new View.OnClickListener(){
+
+        imageButton5=(ImageButton) findViewById(R.id.imageButton5);
+        imageButton6=(ImageButton) findViewById(R.id.imageButton6);
+        imageButton7=(ImageButton) findViewById(R.id.imageButton7);
+
+        imageButton6.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent1 = new Intent(MainActivity.this, quanzi.class);
+                Intent intent1 = new Intent(MainActivity2.this, quanzi.class);
                 startActivity(intent1);
             }
         });
-        textView2.setOnClickListener(new View.OnClickListener(){
+        imageButton7.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent1 = new Intent(MainActivity.this, PersonActivity.class);
+                Intent intent1 = new Intent(MainActivity2.this, PersonActivity.class);
                 startActivity(intent1);
             }
         });
@@ -118,7 +117,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.userFeedback:
                 //填写用户反馈
-                new MaterialDialog.Builder(MainActivity.this)
+                new MaterialDialog.Builder(MainActivity2.this)
                         .title("用户反馈")
                         .inputRangeRes(1, 50, R.color.colorBlack)
                         .inputType(InputType.TYPE_CLASS_TEXT)
@@ -126,7 +125,7 @@ public class MainActivity extends BaseActivity {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
                                 System.out.println("反馈的内容为：" + input);
-                                Toast.makeText(MainActivity.this, "反馈成功！反馈内容为：" + input, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity2.this, "反馈成功！反馈内容为：" + input, Toast.LENGTH_SHORT).show();
                             }
                         })
                         .positiveText("确定")
@@ -134,7 +133,7 @@ public class MainActivity extends BaseActivity {
                         .show();
                 break;
             case R.id.userExit:
-                SweetAlertDialog mDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.NORMAL_TYPE)
+                SweetAlertDialog mDialog = new SweetAlertDialog(MainActivity2.this, SweetAlertDialog.NORMAL_TYPE)
                         .setTitleText("提示")
                         .setContentText("您是否要退出？")
                         .setCustomImage(null)
