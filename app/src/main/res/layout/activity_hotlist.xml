@@ -7,101 +7,127 @@
     android:orientation="vertical"
     android:scrollbars="none"
     tools:context=".HotList">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:background="@color/colorqbule"
+            app:titleTextColor="@color/colorWhite"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            />
+
+        <!--<LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:orientation="horizontal"
-            android:layout_margin="15dp">
+           >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="关注"
-                android:textSize="20dp"
-                android:textColor="#4F4F4F"/>
+                android:textColor="#4F4F4F"
+                android:textSize="20dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="180dp"
                 android:text="发现"
-                android:textSize="20dp"
-                android:textColor="#4F4F4F"/>
+                android:textColor="#4F4F4F"
+                android:textSize="20dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
+                android:layout_marginLeft="170dp"
                 android:text="热榜"
-                android:textSize="20dp"
-                android:textColor="#4F4F4F"/>
+                android:textColor="#4F4F4F"
+                android:textSize="20dp" />
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="40dp"
-                android:src="@drawable/search"
-                android:background="#fff"/>
-        </LinearLayout>
+                android:background="#fff"
+                android:src="@drawable/search" />
+        </LinearLayout>-->
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:src="@drawable/advertising"/>
+            android:src="@drawable/advertising" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="#DCDCDC"/>
+            android:background="#DCDCDC" />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:text="三月新闻热榜"
-                android:textSize="20dp"
-                android:textColor="#000"/>
+                android:textColor="#000"
+                android:textSize="20dp" />
+
             <ImageButton
                 android:id="@+id/ImageButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/enter1"
+                android:layout_marginRight="10dp"
                 android:background="#fff"
-                android:layout_alignParentRight="true"/>
+                android:src="@drawable/enter1" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_toLeftOf="@+id/ImageButton3"
                 android:text="完整榜单"
                 android:textColor="#4F4F4F"
-                android:textSize="15dp"
-                android:layout_toLeftOf="@+id/ImageButton3"/>
+                android:textSize="15dp" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="15dp">
+            android:layout_height="150dp"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/newslist" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="#新闻"
                     android:textColor="	#8B3A3A"
-                    android:textSize="20dp"
-                    android:layout_gravity="center"/>
+                    android:textSize="20dp" />
             </FrameLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,206 +137,228 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:ellipsize="end"
+                    android:maxEms="18"
+                    android:singleLine="true"
                     android:text="1.网易云40万、TME30万原创音乐人,正在撬动行业格局"
-                    android:textSize="15dp"
                     android:textColor="#4F4F4F"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:textSize="15dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:ellipsize="end"
+                    android:maxEms="18"
+                    android:singleLine="true"
                     android:text="2.听见梦想的声音！"
-                    android:textSize="15dp"
                     android:textColor="#4F4F4F"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:textSize="15dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="3.音乐Big榜，乐队风云摇滚新锐-肆囍乐队"
-                    android:textSize="15dp"
-                    android:textColor="#4F4F4F"
+                    android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:text="3.音乐Big榜，乐队风云摇滚新锐-肆囍乐队"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
         <!--音乐热榜-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:text="三月音乐热榜"
-                android:textSize="20dp"
-                android:textColor="#000"/>
+                android:textColor="#000"
+                android:textSize="20dp" />
+
             <ImageButton
                 android:id="@+id/ImageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/enter1"
+                android:layout_marginRight="10dp"
                 android:background="#fff"
-                android:layout_alignParentRight="true"/>
+                android:src="@drawable/enter1" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_toLeftOf="@+id/ImageButton4"
                 android:text="完整榜单"
                 android:textColor="#4F4F4F"
-                android:textSize="15dp"
-                android:layout_toLeftOf="@+id/ImageButton4"/>
+                android:textSize="15dp" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/music3" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="#音乐"
                     android:textColor="#0000CD	"
-                    android:textSize="20dp"
-                    android:layout_gravity="center"/>
+                    android:textSize="20dp" />
             </FrameLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:orientation="vertical">
                 <!--三条热度新闻-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:ellipsize="end"
+                    android:maxEms="18"
+                    android:singleLine="true"
                     android:text="1.1 to 2 -Elaine-1"
-                    android:textSize="15dp"
                     android:textColor="#4F4F4F"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:textSize="15dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:ellipsize="end"
+                    android:maxEms="18"
+                    android:singleLine="true"
                     android:text="2.平凡的一天 -毛不易！"
-                    android:textSize="15dp"
                     android:textColor="#4F4F4F"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:textSize="15dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="3.拥抱 -五月天"
-                    android:textSize="15dp"
-                    android:textColor="#4F4F4F"
+                    android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:text="3.拥抱 -五月天"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
         <!--圈子热榜-->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:text="三月圈子热榜"
-                android:textSize="20dp"
-                android:textColor="#000"/>
+                android:textColor="#000"
+                android:textSize="20dp" />
+
             <ImageButton
                 android:id="@+id/ImageButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/enter1"
+                android:layout_marginRight="10dp"
                 android:background="#fff"
-                android:layout_alignParentRight="true"/>
+                android:src="@drawable/enter1" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_toLeftOf="@+id/ImageButton5"
                 android:text="完整榜单"
                 android:textColor="#4F4F4F"
-                android:textSize="15dp"
-                android:layout_toLeftOf="@+id/ImageButton5"/>
+                android:textSize="15dp" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/cycle" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="#圈子"
                     android:textColor="#9932CC"
-                    android:textSize="20dp"
-                    android:layout_gravity="center"/>
+                    android:textSize="20dp" />
             </FrameLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:orientation="vertical">
                 <!--三条热度新闻-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:ellipsize="end"
+                    android:maxEms="18"
+                    android:singleLine="true"
                     android:text="1.一曲歌曲一个故事"
-                    android:textSize="15dp"
                     android:textColor="#4F4F4F"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:textSize="15dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:ellipsize="end"
+                    android:maxEms="18"
+                    android:singleLine="true"
                     android:text="2.不在深夜"
-                    android:textSize="15dp"
                     android:textColor="#4F4F4F"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:textSize="15dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="3.民谣集合区"
-                    android:textSize="15dp"
-                    android:textColor="#4F4F4F"
+                    android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:ellipsize="end"/>
+                    android:text="3.民谣集合区"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

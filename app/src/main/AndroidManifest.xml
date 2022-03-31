@@ -13,6 +13,12 @@
             android:name=".newsdetail"
             android:exported="false" />
         <activity
+            android:name=".HotList"
+            android:exported="false" />
+        <activity
+            android:name=".quanzi"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

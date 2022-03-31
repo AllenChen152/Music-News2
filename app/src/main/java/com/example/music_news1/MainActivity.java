@@ -19,6 +19,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -35,6 +36,7 @@ public class MainActivity extends BaseActivity {
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private ViewPager viewPager;
+    private TextView textView3,textView1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,21 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
+        textView3=(TextView)findViewById(R.id.textview3);
+        textView1=(TextView)findViewById(R.id.textview1);
+        textView3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent1 = new Intent(MainActivity.this, HotList.class);
+                startActivity(intent1);
+            }
+        });
+
+        textView1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent1 = new Intent(MainActivity.this, quanzi.class);
+                startActivity(intent1);
+            }
+        });
 
         /*Button button1=(Button) findViewById(R.id.button);
         button1.setOnClickListener(new View.OnClickListener(){

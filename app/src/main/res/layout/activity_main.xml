@@ -23,7 +23,47 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal"
+            >
 
+            <TextView
+                android:id="@+id/textview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="圈子"
+                android:textColor="#4F4F4F"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:text="发现"
+                android:textColor="#4F4F4F"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textview3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:text="热榜"
+                android:textColor="#4F4F4F"
+                android:textSize="20dp" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:background="#fff"
+                android:src="@drawable/search"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </LinearLayout>
         <!--横向标签显示布局-->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
@@ -34,9 +74,11 @@
             app:tabTextColor="#000000"
             tools:ignore="SpeakableTextPresentCheck">
 
+
         </com.google.android.material.tabs.TabLayout>
 
         <!---->
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
