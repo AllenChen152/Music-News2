@@ -16,4 +16,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="h">#989C9C</color>
     <color name="h1">#E0E1E1</color>
+    <color name="h2">#575A5A</color>
+    <color name="orange">#FFA500</color>
 </resources>

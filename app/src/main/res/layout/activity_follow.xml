@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Follow">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+  //第一个关注的人
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+
+            <com.example.music_news1.tools.ImageRound
+                android:id="@+id/imageView1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignBottom="@id/ll_1"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/follow1" />
+
+            <RelativeLayout
+                android:id="@+id/ll_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/imageView1"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="音乐热评榜"
+                    android:textSize="25sp"
+                    android:textColor="@color/orange"/>
+
+
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1"
+                    android:text="爱乐音乐人"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView8"
+                    android:maxEms="10"
+                    android:singleLine="true"
+                    android:text="Free beat 是什么啊？音乐小白提问，beat有很多地方是相似的。但作曲又是写的那首歌对应的歌手
+                             作曲和beat有什么区别呢"
+                    android:textColor="@color/h"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape"
+                android:text="√ 已关注"
+                android:textColor="@color/h2"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.0001dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/h"
+            />
+    </LinearLayout>
+
+    //第二个关注的人(所有id加"_1")
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+
+            <com.example.music_news1.tools.ImageRound
+                android:id="@+id/imageView1_1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignBottom="@id/ll_2"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/follow2" />
+
+            <RelativeLayout
+                android:id="@+id/ll_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/imageView1_1"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="MADILYN"
+                    android:textColor="@color/orange"
+                    android:textSize="25sp" />
+
+
+                <TextView
+                    android:id="@+id/textView8_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_1"
+                    android:text="美国人气歌手"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView8_1"
+                    android:maxEms="10"
+                    android:singleLine="true"
+                    android:text="hey loves hope you enjoy my sad acoustic cover of this mega
+                               hit song Heat Waves by Glass Animals"
+                    android:textColor="@color/h"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape"
+                android:text="√ 已关注"
+                android:textColor="@color/h2"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.0001dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/h"
+            />
+    </LinearLayout>
+    //第三个关注的人(所有id加"_3")
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+
+            <com.example.music_news1.tools.ImageRound
+                android:id="@+id/imageView1_3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignBottom="@id/ll_3"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/follow3" />
+
+            <RelativeLayout
+                android:id="@+id/ll_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/imageView1_3"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView1_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="DuaLipa"
+                    android:textColor="@color/orange"
+                    android:textSize="25sp" />
+
+
+                <TextView
+                    android:id="@+id/textView8_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_3"
+                    android:text="英国女歌手"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView8_3"
+                    android:maxEms="10"
+                    android:singleLine="true"
+                    android:text="swipe to the end for the ultimate thrist trap"
+                    android:textColor="@color/h"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape"
+                android:text="√ 已关注"
+                android:textColor="@color/h2"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.0001dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/h"
+            />
+    </LinearLayout>
+    //第四个关注的人(所有id加"_4")
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+
+            <com.example.music_news1.tools.ImageRound
+                android:id="@+id/imageView1_4"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignBottom="@id/ll_4"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/follow4" />
+
+            <RelativeLayout
+                android:id="@+id/ll_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/imageView1_4"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView1_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="国家大剧院古典音乐频道"
+                    android:textColor="@color/orange"
+                    android:textSize="25sp" />
+
+
+                <TextView
+                    android:id="@+id/textView8_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_4"
+                    android:text="国家大剧院古典音乐官方"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView8_4"
+                    android:maxEms="10"
+                    android:singleLine="true"
+                    android:text="春日随想——线上演播两周年特别策划"
+                    android:textColor="@color/h"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape"
+                android:text="√ 已关注"
+                android:textColor="@color/h2"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.0001dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/h"
+            />
+    </LinearLayout>
+    //第五个关注的人(所有id加"_5")
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+
+            <com.example.music_news1.tools.ImageRound
+                android:id="@+id/imageView1_5"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_alignBottom="@id/ll_5"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/follow5" />
+
+            <RelativeLayout
+                android:id="@+id/ll_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/imageView1_5"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textView1_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="SamFeldt"
+                    android:textColor="@color/orange"
+                    android:textSize="25sp" />
+
+
+                <TextView
+                    android:id="@+id/textView8_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_5"
+                    android:text="荷兰DJ/制作人"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView8_5"
+                    android:maxEms="10"
+                    android:singleLine="true"
+                    android:text="Thank you so much for all your love!"
+                    android:textColor="@color/h"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape"
+                android:text="√ 已关注"
+                android:textColor="@color/h2"
+                android:textSize="20sp" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0.0001dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/h"
+            />
+    </LinearLayout>
+        //第六个关注的人(所有id加"_6")
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+
+                <com.example.music_news1.tools.ImageRound
+                    android:id="@+id/imageView1_6"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_alignBottom="@id/ll_6"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/follow6" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/imageView1_6"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView1_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Monstercat"
+                        android:textColor="@color/orange"
+                        android:textSize="25sp" />
+
+
+                    <TextView
+                        android:id="@+id/textView8_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView1_6"
+                        android:text="加拿大独立音乐厂牌Monstercat"
+                        android:textColor="@color/h2"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView8_6"
+                        android:maxEms="10"
+                        android:singleLine="true"
+                        android:text="四月的最后一首猫厂，来自Will K"
+                        android:textColor="@color/h"
+                        android:textSize="20sp"/>
+
+                </RelativeLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/shape"
+                    android:text="√ 已关注"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.0001dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/h"
+                />
+        </LinearLayout>
+        //第七个关注的人(所有id加"_7")
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+
+                <com.example.music_news1.tools.ImageRound
+                    android:id="@+id/imageView1_7"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_alignBottom="@id/ll_7"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/follow7" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/imageView1_7"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView1_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Above  BeYond"
+                        android:textColor="@color/orange"
+                        android:textSize="25sp" />
+
+
+                    <TextView
+                        android:id="@+id/textView8_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView1_7"
+                        android:text="英国知名DJ三人组"
+                        android:textColor="@color/h2"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView8_7"
+                        android:maxEms="10"
+                        android:singleLine="true"
+                        android:text="We Find Ourselves-Joda'We'"
+                        android:textColor="@color/h"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/shape"
+                    android:text="√ 已关注"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.0001dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/h"
+                />
+        </LinearLayout>
+        //第8个关注的人(所有id加"_8")
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+
+                <com.example.music_news1.tools.ImageRound
+                    android:id="@+id/imageView1_8"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_alignBottom="@id/ll_8"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/repg" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@id/imageView1_8"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/textView1_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="爱乐"
+                        android:textColor="@color/orange"
+                        android:textSize="25sp" />
+
+
+                    <TextView
+                        android:id="@+id/textView8_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView1_8"
+                        android:text="爱乐官方账号"
+                        android:textColor="@color/h2"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView8_8"
+                        android:maxEms="10"
+                        android:singleLine="true"
+                        android:text="本轮全新歌曲音频已上线。风格鲜明的歌手们化身”心灵旅人“"
+                        android:textColor="@color/h"
+                        android:textSize="20sp"/>
+
+                </RelativeLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/shape"
+                    android:text="√ 已关注"
+                    android:textColor="@color/h2"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.0001dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/h"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
