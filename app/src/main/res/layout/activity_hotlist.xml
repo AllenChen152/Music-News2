@@ -64,7 +64,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:src="@drawable/advertising" />
+            android:background="@drawable/advertising" />
 
         <ImageView
             android:layout_width="match_parent"
