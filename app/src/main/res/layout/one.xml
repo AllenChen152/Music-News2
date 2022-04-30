@@ -307,14 +307,15 @@
             android:id="@+id/imageButton5"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="30dp"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/f" />
+
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/q"
-            android:layout_marginLeft="250dp"/>
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/q" />
         <ImageButton
             android:id="@+id/imageButton7"
             android:layout_width="80dp"

@@ -5,8 +5,6 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorqbule</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <!--设置窗口半透明-->
         <item name="android:windowIsTranslucent">true</item>
         <!--设置隐藏标题栏-->

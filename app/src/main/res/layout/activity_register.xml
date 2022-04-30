@@ -43,10 +43,10 @@
                 android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/rg_username"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20dp"
 
                 />
@@ -66,10 +66,10 @@
                 android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/rg_password"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20dp"
 
                 />
@@ -83,6 +83,7 @@
             android:textSize="30dp"
             android:textColor="@color/white"
             android:background="@color/colorblue"
+            android:onClick="register"
             android:text="注册"
             />
     </LinearLayout>

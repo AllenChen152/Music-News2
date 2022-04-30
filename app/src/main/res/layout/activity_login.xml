@@ -12,13 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="380dp"
         android:background="@drawable/repg" />
+
     <ImageButton
         android:id="@+id/ib1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:background="@null"
         android:src="@drawable/back"
-        android:background="@null"/>
+        android:onClick="fin1"
+        />
 
 
     <LinearLayout
@@ -43,10 +46,10 @@
                 android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/rg_username"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20dp"
 
                 />
@@ -66,11 +69,12 @@
                 android:textColor="@color/black"/>
             <EditText
                 android:id="@+id/rg_password"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="20dp"
+                android:inputType="textPassword"
 
                 />
         </LinearLayout>
@@ -83,6 +87,7 @@
             android:textSize="30dp"
             android:textColor="@color/white"
             android:background="@color/colorblue"
+            android:onClick="login"
             android:text="登录"
             />
         <Button
@@ -90,9 +95,10 @@
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="220dp"
-            android:text="注册"
+            android:text="新用户注册"
             android:textColor="@color/black"
             android:textSize="25dp"
+            android:onClick="regis"
             android:background="@null"/>
     </LinearLayout>
 </RelativeLayout>

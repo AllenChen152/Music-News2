@@ -36,7 +36,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/repg"/>
+                android:src="@drawable/repg"
+                android:onClick="Alogin"
+                />
 
             <TextView
                 android:id="@+id/textView"
@@ -234,15 +236,18 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/setting"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设置"
-                android:layout_toRightOf="@+id/ImageView5"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/ImageView5"
+                android:text="设置"
                 android:textColor="#4F4F4F"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:onClick="shezhi"
+                />
             <ImageView
                 android:id="@+id/ImageView8"
                 android:layout_width="30dp"
@@ -264,14 +269,14 @@
             android:id="@+id/imageButton5"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="30dp"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/f" />
 
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="30dp"
             android:background="@drawable/q" />
 
         <ImageButton

@@ -23,6 +23,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.BaseActivity;
 
+import java.security.PublicKey;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity2 extends BaseActivity  {
@@ -54,6 +56,7 @@ public class MainActivity2 extends BaseActivity  {
         imageButton6=(ImageButton) findViewById(R.id.imageButton6);
         imageButton7=(ImageButton) findViewById(R.id.imageButton7);
 
+
         imageButton6.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent1 = new Intent(MainActivity2.this, quanzi.class);
@@ -81,6 +84,7 @@ public class MainActivity2 extends BaseActivity  {
         settings.setDisplayZoomControls(false);*/
 
     }
+
     @Override
     protected void onStart() {
         super.onStart();
