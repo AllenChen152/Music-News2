@@ -12,13 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="380dp"
         android:background="@drawable/repg" />
+
     <ImageButton
         android:id="@+id/ib1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:background="@null"
         android:src="@drawable/back"
-        android:background="@null"/>
+        android:onClick="fin2"
+        />
 
 
     <LinearLayout

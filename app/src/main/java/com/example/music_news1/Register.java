@@ -58,4 +58,8 @@ public class Register extends AppCompatActivity {
         }
         return i;
     }
+
+    public void fin2(View view){
+        finish();
+    }
 }

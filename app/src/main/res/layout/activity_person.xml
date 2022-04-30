@@ -229,7 +229,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:onClick="shezhi">
 
             <ImageView
                 android:id="@+id/ImageView5"
@@ -246,7 +247,7 @@
                 android:text="设置"
                 android:textColor="#4F4F4F"
                 android:textSize="20dp"
-                android:onClick="shezhi"
+
                 />
             <ImageView
                 android:id="@+id/ImageView8"
