@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -63,6 +64,19 @@ public class MainActivity2 extends BaseActivity  {
             public void onClick(View v){
                 Intent intent1 = new Intent(MainActivity2.this, HotList.class);
                 startActivity(intent1);
+            }
+        });
+        textView1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                SharedPreferences sp=getSharedPreferences("user",MODE_PRIVATE);
+                String user=sp.getString("username","");
+                if(user.equals("")) {
+                    Intent intent = new Intent(MainActivity2.this, LoginActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(MainActivity2.this, Follow.class);
+                    startActivity(intent);
+                }
             }
         });
 

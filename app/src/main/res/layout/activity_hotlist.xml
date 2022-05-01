@@ -22,44 +22,62 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             />
 
-        <!--<LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="15dp"
             android:orientation="horizontal"
-           >
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:layout_editor_absoluteX="15dp"
+            tools:ignore="NotSibling">
 
             <TextView
+                android:id="@+id/textview1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:text="关注"
                 android:textColor="#4F4F4F"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <TextView
+                android:id="@+id/textview2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
                 android:text="发现"
                 android:textColor="#4F4F4F"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/textview3"
+                app:layout_constraintStart_toEndOf="@+id/textview1"
+                tools:ignore="MissingConstraints" />
 
             <TextView
+                android:id="@+id/textview3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
+                android:layout_marginEnd="32dp"
                 android:text="热榜"
                 android:textColor="#4F4F4F"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                tools:ignore="MissingConstraints" />
 
             <ImageButton
+                android:id="@+id/imageButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
                 android:background="#fff"
-                android:src="@drawable/search" />
-        </LinearLayout>-->
+                android:src="@drawable/search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:layout_width="match_parent"

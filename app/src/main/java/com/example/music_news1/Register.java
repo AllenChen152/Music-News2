@@ -25,7 +25,8 @@ public class Register extends AppCompatActivity {
 
         String user=((EditText)findViewById(R.id.rg_username)).getText().toString();
         String pwd=((EditText)findViewById(R.id.rg_password)).getText().toString();
-        int result=saveUser(user,pwd);
+        String name=((EditText)findViewById(R.id.rg_name)).getText().toString();
+        int result=saveUser(user,pwd,name);
         if(result==1){
             Toast.makeText(Register.this, "注册成功！", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(	Register.this,LoginActivity.class);
@@ -39,7 +40,7 @@ public class Register extends AppCompatActivity {
 
     }
 
-    public int saveUser(String user,String pwd){
+    public int saveUser(String user,String pwd,String name){
         SQLiteDatabase db= dbHelper.getWritableDatabase();
         int i;
         if(user!=null){
@@ -50,6 +51,7 @@ public class Register extends AppCompatActivity {
                 ContentValues ctv=new ContentValues ();
                 ctv.put("username",user);
                 ctv.put("password",pwd);
+                ctv.put("name",name);
                 db.insert("user",null,ctv);
                 i=1;
             }

@@ -155,7 +155,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_margin="15dp"
+            android:onClick="guanzhu"
+            >
 
             <ImageView
                 android:id="@+id/ImageView3"
@@ -172,14 +174,6 @@
                 android:textColor="#4F4F4F"
                 android:textSize="20dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/ImageView6"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:text="0"
-                android:textSize="20dp"/>
             <ImageView
                 android:id="@+id/ImageView6"
                 android:layout_width="30dp"

@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -14,11 +16,13 @@ import android.widget.Toast;
 public class PersonActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private Creatsqlite dbHelper;
     private ImageButton imageButton5,imageButton6,imageButton7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person);
+        dbHelper = new Creatsqlite(this, "UserStore.db", null, 1);
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("爱乐——个人中心");
@@ -40,15 +44,22 @@ public class PersonActivity extends AppCompatActivity {
         });
 
         SharedPreferences sp=getSharedPreferences("user",MODE_PRIVATE);
-        String user=sp.getString("username","未登录");
-        TextView text=(TextView) findViewById(R.id.textView);
-        text.setText(user);
+        String user=sp.getString("username","");
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        String sql = "select * from user where username=?";
+        Cursor cursor = db.rawQuery(sql, new String[] {user});
+        while(cursor.moveToNext()) {
+            String name=cursor.getString(3);
+            TextView text=(TextView) findViewById(R.id.textView);
+            text.setText(name);
+        }
+
 
     }
     public void Alogin(View view){
         SharedPreferences sp=getSharedPreferences("user",MODE_PRIVATE);
-        String user=sp.getString("username","未登录");
-        if(user.equals("未登录")) {
+        String user=sp.getString("username","");
+        if(user.equals("")) {
             Intent intent = new Intent(PersonActivity.this, LoginActivity.class);
             startActivity(intent);
         }else{
@@ -58,5 +69,16 @@ public class PersonActivity extends AppCompatActivity {
     public void shezhi(View view){
         Intent intent = new Intent(	PersonActivity.this,Setting.class);
         startActivity(intent);
+    }
+    public void guanzhu(View view){
+        SharedPreferences sp=getSharedPreferences("user",MODE_PRIVATE);
+        String user=sp.getString("username","");
+        if(user.equals("")) {
+            Intent intent = new Intent(PersonActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(PersonActivity.this, Follow.class);
+            startActivity(intent);
+        }
     }
 }

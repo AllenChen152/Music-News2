@@ -36,6 +36,9 @@
             android:name=".newsdetail"
             android:exported="false" />
         <activity
+            android:name=".NewsDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".HotList"
             android:exported="false" />
         <activity
