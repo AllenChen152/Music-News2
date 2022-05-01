@@ -57,12 +57,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/coordinatorLayout">
 
+                <ImageButton
+                    android:id="@+id/ib1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/backblack"
+                    android:onClick="fin1"
+                     />
                 <TextView
                     android:id="@+id/details_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_margin="10dp"
+
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:text="Eason陈奕迅《孤勇者》连续12周独霸音乐平台榜首"

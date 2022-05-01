@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <!--自定义标题栏-->
+                <!--最上方导航栏-->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
@@ -109,7 +109,6 @@
                     app:tabSelectedTextColor="#FF0000"
                     app:tabTextColor="#000000"
                     tools:ignore="SpeakableTextPresentCheck">
-
 
                 </com.google.android.material.tabs.TabLayout>
 

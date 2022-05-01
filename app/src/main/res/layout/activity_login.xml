@@ -19,9 +19,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@null"
-        android:src="@drawable/back"
         android:onClick="fin1"
-        />
+        android:src="@drawable/back" />
 
 
     <LinearLayout

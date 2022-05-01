@@ -42,4 +42,7 @@ public class Setting extends AppCompatActivity {
 
 
     }
+    public void fin1(View view){
+        finish();
+    }
 }

@@ -2,6 +2,7 @@ package com.example.music_news1;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ListView;
 
@@ -35,5 +36,8 @@ public class NewsDetailActivity extends Activity {
         comments.add(new Comment("用户5", "2022.04.30 07.24", "内容内容", 23));
         comments.add(new Comment("用户6", "2022.04.30 07.24", "内容内容", 23));
         return comments.toArray(new Comment[6]);
+    }
+    public void fin1(View view){
+        finish();
     }
 }
