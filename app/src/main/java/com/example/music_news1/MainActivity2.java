@@ -1,21 +1,28 @@
 package com.example.music_news1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +30,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.BaseActivity;
 
-import java.security.PublicKey;
+import java.io.IOException;
+import java.util.Date;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -33,7 +41,14 @@ public class MainActivity2 extends BaseActivity  {
     private DrawerLayout mDrawerLayout;
     private ViewPager viewPager;
     private TextView textView3,textView1,textView2;
-    private ImageButton imageButton5,imageButton6,imageButton7;
+    private ImageButton imageButton5,imageButton6,imageButton7, imageButton;
+
+    private ConstraintLayout news1, news2;
+
+    private static MediaPlayer mediaPlayer = new MediaPlayer();
+    private SeekBar seekBar;
+    private boolean hasStart = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,11 +66,15 @@ public class MainActivity2 extends BaseActivity  {
             }
         });
 
-
+        //现在findViewById已经不需要强制转换了噢 :)
+        imageButton=(ImageButton) findViewById(R.id.imageButton);
         imageButton5=(ImageButton) findViewById(R.id.imageButton5);
         imageButton6=(ImageButton) findViewById(R.id.imageButton6);
         imageButton7=(ImageButton) findViewById(R.id.imageButton7);
 
+        seekBar = findViewById(R.id.seekbar);
+        news1 = findViewById(R.id.layout_news_1);
+        news2 = findViewById(R.id.layout_news_2);
 
         imageButton6.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -67,6 +86,34 @@ public class MainActivity2 extends BaseActivity  {
             public void onClick(View v){
                 Intent intent1 = new Intent(MainActivity2.this, PersonActivity.class);
                 startActivity(intent1);
+            }
+        });
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play));
+                } else {
+                    if (hasStart) mediaPlayer.start();
+                    else toPlay();
+                    imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
+                }
+            }
+        });
+
+        news1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity2.this, NewsDetailActivity.class));
+            }
+        });
+
+        news2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity2.this, NewsDetailActivity.class));
             }
         });
 
@@ -84,7 +131,6 @@ public class MainActivity2 extends BaseActivity  {
         settings.setDisplayZoomControls(false);*/
 
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -161,6 +207,66 @@ public class MainActivity2 extends BaseActivity  {
         }
         return true;
     }
+
+    /**
+     * 播放组件
+     */
+    private void toPlay(){
+
+        try {
+            mediaPlayer.reset();
+
+            mediaPlayer.setDataSource(getResources().openRawResourceFd(R.raw.music1));
+            mediaPlayer.prepareAsync();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mediaPlayer.start();
+                    hasStart = true;
+                    imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
+                    seekBar.setMax(mediaPlayer.getDuration());
+                }
+            });
+
+        }catch (Exception e){ }
+
+        //开启新线程获取实时播放位置
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    while (true){
+                        sleep(1000);    //为了防止内存占用过多，需要休眠
+                        if (mediaPlayer.isPlaying()){
+                            //注意更新ui界面需要切换到主线程
+                            handler.sendEmptyMessage(1);
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        thread.start();
+    }
+
+    //主线程更新ui界面
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what){
+                case 1:
+                    if (0 != mediaPlayer.getCurrentPosition()){
+                        seekBar.setProgress(mediaPlayer.getCurrentPosition());
+                    }
+                    break;
+            }
+        }
+    };
+
     /*public class WebViewClientDemo extends WebViewClient {
         @Override
         // 在WebView中而不是默认浏览器中显示页面

@@ -6,15 +6,12 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
-    tools:context=".MainActivity2"
-    tools:ignore="MissingClass">
+    tools:openDrawer="start">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <!--自定义标题栏-->
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,240 +19,381 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorqbule"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextColor="@color/colorWhite" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/textview1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="关注"
-                android:textColor="#4F4F4F"
-                android:textSize="20dp" />
-
-
-
-
-            <TextView
-                android:id="@+id/textview2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:text="发现"
-                android:textColor="#4F4F4F"
-                android:textSize="20dp" />
-            <TextView
-                android:id="@+id/textview3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="170dp"
-                android:text="热榜"
-                android:textColor="#4F4F4F"
-                android:textSize="20dp" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:background="#fff"
-                android:src="@drawable/search"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
-        <!--横向标签显示布局-->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="#FF0000"
-            app:tabTextColor="#000000"
-            tools:ignore="SpeakableTextPresentCheck">
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-
-        </com.google.android.material.tabs.TabLayout>
-
-        <LinearLayout
-            android:layout_width="550dp"
-            android:layout_height="500dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/shape"
-            android:orientation="vertical"
-            android:showDividers="middle">
-
-            <TextView
-                android:id="@+id/textView2"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="31/2022.3"
-                android:textSize="25dp"
-                android:textStyle="bold" />
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@drawable/ic_tu1" />
+                <!--自定义标题栏-->
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center_horizontal"
-                android:text="我以为我会放弃的，后来都延续了"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="15dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    tools:layout_editor_absoluteX="15dp">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal"
-                android:text=" 《西柚（See You）》"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textview1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:text="关注"
+                        android:textColor="#4F4F4F"
+                        android:textSize="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
+                    <TextView
+                        android:id="@+id/textview2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="发现"
+                        android:textColor="#4F4F4F"
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toStartOf="@+id/textview3"
+                        app:layout_constraintStart_toEndOf="@+id/textview1"
+                        tools:ignore="MissingConstraints" />
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bofang1" />
+                    <TextView
+                        android:id="@+id/textview3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="32dp"
+                        android:text="热榜"
+                        android:textColor="#4F4F4F"
+                        android:textSize="20dp"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                        tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:text="----李上安/Todd Li"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-            </RelativeLayout>
-        </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="#fff"
+                        android:src="@drawable/search"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--横向标签显示布局-->
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                    app:tabMode="scrollable"
+                    app:tabSelectedTextColor="#FF0000"
+                    app:tabTextColor="#000000"
+                    tools:ignore="SpeakableTextPresentCheck">
 
-        <LinearLayout
-            android:id="@+id/relative1"
-            android:layout_width="550dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal">
 
-            <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="350dp"
-                android:background="@drawable/bi"
-                tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.tabs.TabLayout>
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="35dp"
-                android:background="@drawable/shoucang" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/shape"
+                    android:orientation="vertical"
+                    android:showDividers="middle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tabLayout">
 
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="35dp"
-                android:background="@drawable/zan" />
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:background="@drawable/ic_tu1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="31/2022.3"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:gravity="center_horizontal"
+                        android:text="我以为我会放弃的，后来都延续了"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_horizontal"
+                        android:text=" 《西柚（See You）》"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/ic_play"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="32dp"
+                        android:text="               ----李上安/Todd Li"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                    <SeekBar
+                        android:id="@+id/seekbar"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toTopOf="@+id/imageButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/relative1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                    <ImageButton
+                        android:id="@+id/imageButton1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bi"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="32dp"
+                        android:background="@drawable/shoucang"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/imageButton3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="32dp"
+                        android:background="@drawable/zan"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@color/h1"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/relative1">
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="-音乐资讯-"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_news_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape1"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Eason陈奕迅《孤勇者》连续12周独霸音乐平台榜首"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/relativeLayout2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/shape"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/eason" />
+                    </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_news_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape1"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_news_1">
+
+                    <TextView
+                        android:id="@+id/textView66"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="港媒报陈奕迅将加盟《声声不息》其经纪人否认"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/relativeLayout22"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout22"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/shape"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageView33"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/eason2" />
+                    </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal"
-            android:background="@color/h1"
-            >
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="-音乐资讯-"
-            android:layout_gravity="center_horizontal"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:orientation="vertical"
-            android:background="@drawable/shape1">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="450dp"
-                android:layout_height="wrap_content"
-                android:text="Eason陈奕迅《孤勇者》连续12周独霸音乐平台榜首"
-                android:textSize="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="25dp"
-                android:textStyle="bold"/>
-
-            <RelativeLayout
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/shape"
-                android:layout_marginLeft="480dp"
-                android:layout_marginTop="-90dp">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/eason" />
-            </RelativeLayout>
-        </LinearLayout>
-        <RelativeLayout
-            android:layout_width="600dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="0dp">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageButton
                 android:id="@+id/imageButton5"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/f" />
+                android:layout_marginStart="32dp"
+                android:background="@drawable/f"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/imageButton6"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/q" />
-        <ImageButton
-            android:id="@+id/imageButton7"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/r"
-            android:layout_marginLeft="490dp"/>
-        </RelativeLayout>
+                android:background="@drawable/q"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton7"
+                app:layout_constraintStart_toEndOf="@+id/imageButton5"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageButton
+                android:id="@+id/imageButton7"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/r"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
