@@ -27,12 +27,6 @@ public class HotList extends Activity {
         textView2=(TextView)findViewById(R.id.textview2);
         textView1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent1 = new Intent(HotList.this, Follow.class);
-                startActivity(intent1);
-            }
-        });
-        textView2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
                 SharedPreferences sp=getSharedPreferences("user",MODE_PRIVATE);
                 String user=sp.getString("username","");
                 if(user.equals("")) {
@@ -42,6 +36,13 @@ public class HotList extends Activity {
                     Intent intent = new Intent(HotList.this, Follow.class);
                     startActivity(intent);
                 }
+
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent1 = new Intent(HotList.this, MainActivity2.class);
+                startActivity(intent1);
             }
         });
     }
