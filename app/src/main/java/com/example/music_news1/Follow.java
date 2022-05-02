@@ -30,7 +30,7 @@ public class Follow extends AppCompatActivity {
         });
         textView2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent1 = new Intent(Follow.this, MainActivity2.class);
+                Intent intent1 = new Intent(Follow.this, MainActivity.class);
                 startActivity(intent1);
             }
         });

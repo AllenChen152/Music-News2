@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         String user=((EditText)findViewById(R.id.rg_username)).getText().toString();
         String pwd=((EditText)findViewById(R.id.rg_password)).getText().toString();
         if (login(user,pwd)) {
-            Intent intent=new Intent(LoginActivity.this,MainActivity2.class);
+            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
             SharedPreferences.Editor ed=getSharedPreferences("user",MODE_PRIVATE).edit();
             ed.putString("username",user);
             ed.commit();

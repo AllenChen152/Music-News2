@@ -298,7 +298,7 @@
         </LinearLayout>
 
     </LinearLayout>
-    <RelativeLayout
+    <!--<RelativeLayout
         android:layout_width="600dp"
         android:layout_height="80dp"
         android:layout_marginTop="10dp">
@@ -322,6 +322,6 @@
             android:layout_height="80dp"
             android:background="@drawable/r"
             android:layout_marginLeft="490dp"/>
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </LinearLayout>

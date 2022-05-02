@@ -8,9 +8,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-/**
- * 类名记得要大写噢
- */
 public class NewsDetailActivity extends Activity {
 
     @Override

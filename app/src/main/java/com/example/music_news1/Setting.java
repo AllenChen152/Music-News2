@@ -28,7 +28,7 @@ public class Setting extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences("user",MODE_PRIVATE).edit();
                 editor.clear();
                 editor.commit();
-                Intent intent = new Intent(	Setting.this,PersonActivity.class);
+                Intent intent = new Intent(	Setting.this,MainActivity.class);
                 startActivity(intent);
             }
         });

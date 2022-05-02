@@ -24,7 +24,7 @@
             android:name=".Register"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,12 +40,6 @@
             android:exported="false" />
         <activity
             android:name=".HotList"
-            android:exported="false" />
-        <activity
-            android:name=".PersonActivity"
-            android:exported="false" />
-        <activity
-            android:name=".quanzi"
             android:exported="false" />
     </application>
 

@@ -41,7 +41,7 @@ public class HotList extends Activity {
         });
         textView2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent1 = new Intent(HotList.this, MainActivity2.class);
+                Intent intent1 = new Intent(HotList.this, MainActivity.class);
                 startActivity(intent1);
             }
         });

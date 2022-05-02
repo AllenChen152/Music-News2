@@ -36,9 +36,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/repg"
-                android:onClick="Alogin"
-                />
+                android:src="@drawable/repg" />
 
             <TextView
                 android:id="@+id/textView"
@@ -156,7 +154,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:onClick="guanzhu"
+            android:id="@+id/guanzhu"
+            android:focusableInTouchMode="true"
             >
 
             <ImageView
@@ -224,7 +223,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:onClick="shezhi">
+            android:id="@+id/shezhi"
+            android:focusableInTouchMode="true" >
 
             <ImageView
                 android:id="@+id/ImageView5"
@@ -255,7 +255,7 @@
             android:layout_height="10dp"
             android:background="#DCDCDC"/>
     </LinearLayout>
-    <RelativeLayout
+    <!--<RelativeLayout
         android:layout_width="600dp"
         android:layout_height="80dp"
         android:layout_marginTop="80dp">
@@ -280,5 +280,5 @@
             android:layout_height="80dp"
             android:layout_marginLeft="490dp"
             android:background="@drawable/r" />
-    </RelativeLayout>
+    </RelativeLayout>-->
 </LinearLayout>
