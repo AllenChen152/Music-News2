@@ -10,11 +10,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.youth.banner.Banner;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
+import com.youth.banner.indicator.CircleIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class HotList extends Activity {
 
     private Toolbar toolbar;
     private TextView textView3,textView1,textView2;
+    List<Integer> list = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +54,27 @@ public class HotList extends Activity {
                 startActivity(intent1);
             }
         });
+        initDate();
+        Banner mbanner=(Banner) findViewById(R.id.banner);
+        Banner banner = mbanner.setAdapter(new BannerImageAdapter<Integer>(list) {
+            @Override
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+                holder.imageView.setImageResource(data);
+            }
+
+        });
+        //是否允许自动轮播
+        mbanner.isAutoLoop(true);
+        //设置指示器
+        mbanner.setIndicator(new CircleIndicator(this));
+        //开始轮播
+        mbanner.start();
+    }
+    private void initDate() {
+        list.add(R.drawable.aaa);
+        list.add(R.drawable.bbb);
+        list.add(R.drawable.ccc);
+        list.add(R.drawable.ddd);
     }
 
 

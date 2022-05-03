@@ -79,10 +79,13 @@
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/advertising" />
+            android:background="@drawable/advertising"
+             />
+
 
         <ImageView
             android:layout_width="match_parent"
