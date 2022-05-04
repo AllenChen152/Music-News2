@@ -4,11 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,12 +35,15 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.example.music_news1.Creatsqlite;
 import com.example.music_news1.Follow;
 import com.example.music_news1.HotList;
 import com.example.music_news1.LoginActivity;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
+import com.example.music_news1.Register;
 import com.example.music_news1.tools.ActivityCollector;
+import com.google.android.material.navigation.NavigationView;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -47,13 +54,15 @@ public class HomeFragment extends Fragment {
     private DrawerLayout mDrawerLayout;
     private ViewPager viewPager;
     private TextView textView3,textView1,textView2;
-    private ImageButton  imageButton;
+    private ImageButton  imageButton,imageButton3;
+    private NavigationView navigationView;
 
     private ConstraintLayout news1, news2;
 
     private static MediaPlayer mediaPlayer = new MediaPlayer();
     private SeekBar seekBar;
     private boolean hasStart = false;
+    private Creatsqlite dbHelper;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -66,8 +75,11 @@ public class HomeFragment extends Fragment {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
+        dbHelper = new Creatsqlite(getActivity(), "UserStore.db", null, 1);
         mDrawerLayout = (DrawerLayout) getView().findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView) getView().findViewById(R.id.nav_design);
         imageButton=(ImageButton)getView().findViewById(R.id.imageButton);
+        ImageView imageView_zan=(ImageView) getView().findViewById(R.id.imageView_zan);
         seekBar = getView().findViewById(R.id.seekbar);
         news1 = getView().findViewById(R.id.layout_news_1);
         news2 = getView().findViewById(R.id.layout_news_2);
@@ -82,6 +94,17 @@ public class HomeFragment extends Fragment {
                     else toPlay();
                     imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
                 }
+            }
+        });
+        //点赞切换
+        final int[] i = {0};
+        imageView_zan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setSelected(i[0] == 0);
+                if(i[0] ==0) i[0] = 1;
+                else i[0] =0;
+
             }
         });
 
@@ -130,6 +153,8 @@ public class HomeFragment extends Fragment {
         super.onStart();
         toolbar = getView().findViewById(R.id.toolbar);
         toolbar.setTitle("爱乐");
+        SharedPreferences sp=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String user=sp.getString("username","");
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         actionBar.setDefaultDisplayHomeAsUpEnabled(true);
@@ -139,6 +164,67 @@ public class HomeFragment extends Fragment {
             //设置Indicator来添加一个点击图标（默认图标是一个返回的箭头）
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+        navigationView.setCheckedItem(R.id.nav_edit);
+        //设置菜单项的监听事件
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                //逻辑页面处理
+                mDrawerLayout.closeDrawers();
+
+                switch (menuItem.getItemId()) {
+                    case R.id.nav_edit:
+                        //每个菜单项的点击事件，通过Intent实现点击item简单实现活动页面的跳转。
+
+                        if (!user.equals("")) {
+                            Intent editIntent = new Intent(getActivity(), NewsDetailActivity.class);
+                            startActivity(editIntent);
+                        } else {
+                            Toast.makeText(getActivity(), "暂无", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case R.id.nav_articles:
+                        // 我发布的文章
+                        /*if (!TextUtils.isEmpty(currentUserId)) {
+                            Intent editIntent = new Intent(MainActivity.this, ArticleActivity.class);
+                            editIntent.putExtra("user_article_id", currentUserId);
+                            startActivityForResult(editIntent, 6);
+                        } else {
+                            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                            loginIntent.putExtra("loginStatus", "请先登录后才能操作！");
+                            startActivityForResult(loginIntent, 1);
+                        }
+                        */
+                        Toast.makeText(getActivity(), "暂无", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_favorite:
+
+                        if (!user.equals("")) {
+                            Intent loveIntent = new Intent(getActivity(), Follow.class);
+                            startActivity(loveIntent);
+                        } else {
+                            Intent loginIntent = new Intent(getActivity(), LoginActivity.class);
+                            startActivity(loginIntent);
+                        }
+                        break;
+                    case R.id.nav_clear_cache:
+                        // 清除缓存
+                        // Toast.makeText(MainActivity.this,"你点击了清除缓存，下步实现把",Toast.LENGTH_SHORT).show();
+                       // clearCacheData();
+                        Toast.makeText(getActivity(), "暂无", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_switch:
+                        // 切换账号
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        // 登录请求码是1
+                        startActivity(intent);
+                        break;
+                    default:
+                }
+                return true;
+            }
+        });
+
     }
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.toolbar,menu);
