@@ -34,6 +34,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.music_news1.Creatsqlite;
 import com.example.music_news1.Follow;
@@ -43,7 +44,10 @@ import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
 import com.example.music_news1.Register;
 import com.example.music_news1.tools.ActivityCollector;
+import com.example.music_news1.tools.DataCleanManager;
 import com.google.android.material.navigation.NavigationView;
+
+import java.io.File;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -211,7 +215,7 @@ public class HomeFragment extends Fragment {
                         // 清除缓存
                         // Toast.makeText(MainActivity.this,"你点击了清除缓存，下步实现把",Toast.LENGTH_SHORT).show();
                        // clearCacheData();
-                        Toast.makeText(getActivity(), "暂无", Toast.LENGTH_SHORT).show();
+                        clearCacheData();
                         break;
                     case R.id.nav_switch:
                         // 切换账号
@@ -226,6 +230,35 @@ public class HomeFragment extends Fragment {
         });
 
     }
+    public void clearCacheData() {
+        // 缓存目录为
+        File file = new File(getActivity().getCacheDir().getPath());
+        //System.out.println("缓存目录为：" + getActivity().getCacheDir().getPath());
+        String cacheSize = null;
+        try {
+            cacheSize = DataCleanManager.getCacheSize(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //System.out.println("缓存大小为：" + cacheSize);
+        new MaterialDialog.Builder(getActivity())
+                .title("提示")
+                .content("当前缓存大小一共为" + cacheSize + "。确定要删除所有缓存？离线内容及其图片均会被清除。")
+                .positiveText("确认")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(MaterialDialog dialog, DialogAction which) {
+                        DataCleanManager.cleanInternalCache(getActivity());
+                        Toast.makeText(getActivity(), "成功清除缓存。", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .negativeText("取消")
+                .show();
+
+    }
+
+
+
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.toolbar,menu);
         super.onCreateOptionsMenu(menu, inflater);
