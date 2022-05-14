@@ -3,6 +3,7 @@ package com.example.music_news1.Fragement;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -45,6 +46,7 @@ import com.example.music_news1.R;
 import com.example.music_news1.Register;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.DataCleanManager;
+import com.example.music_news1.tools.MyReceiver;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
@@ -57,10 +59,11 @@ public class HomeFragment extends Fragment {
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
     private ViewPager viewPager;
-    private TextView textView3,textView1,textView2;
+    private TextView textView3,textView1,textView2,textview0;
     private ImageButton  imageButton,imageButton3;
     private NavigationView navigationView;
 
+    private MyReceiver myReceiver;
     private ConstraintLayout news1, news2;
 
     private static MediaPlayer mediaPlayer = new MediaPlayer();
@@ -149,8 +152,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //电量显示
+        textview0=(TextView) getView().findViewById(R.id.textview0);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
+        myReceiver = new MyReceiver();
+        getActivity().registerReceiver(myReceiver, intentFilter);
+        myReceiver.setMyListener(this::onListener);
 
     }
+    public void onListener(String level) {
+        textview0.setText(level + "%");
+    }
+
+
     @SuppressLint("RestrictedApi")
     public void onStart() {
 
