@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import com.example.music_news1.Creatsqlite;
 import com.example.music_news1.Follow;
 import com.example.music_news1.LoginActivity;
 import com.example.music_news1.R;
@@ -26,18 +25,18 @@ import com.example.music_news1.tools.ImageRound;
 
 public class PerenFragement extends Fragment {
     private Toolbar toolbar;
-    private Creatsqlite dbHelper;
+    private SQLiteDatabase  db;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_person, container, false);
-        dbHelper = new Creatsqlite(getActivity(), "UserStore.db", null, 1);
+        String database_path=getContext().getDatabasePath("UserStore.db").toString();
+        db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
 
         toolbar = view.findViewById(R.id.toolbar);
         toolbar.setTitle("爱乐——个人中心");
 
         SharedPreferences sp=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
         String user=sp.getString("username","");
-        SQLiteDatabase db=dbHelper.getWritableDatabase();
         String sql = "select * from user where username=?";
         Cursor cursor = db.rawQuery(sql, new String[] {user});
         while(cursor.moveToNext()) {

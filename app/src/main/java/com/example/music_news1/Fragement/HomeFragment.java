@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,13 +35,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.example.music_news1.Creatsqlite;
 import com.example.music_news1.Follow;
 import com.example.music_news1.HotList;
 import com.example.music_news1.LoginActivity;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
-import com.example.music_news1.Register;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.DataCleanManager;
 import com.example.music_news1.tools.MyReceiver;
@@ -69,7 +65,7 @@ public class HomeFragment extends Fragment {
     private static MediaPlayer mediaPlayer = new MediaPlayer();
     private SeekBar seekBar;
     private boolean hasStart = false;
-    private Creatsqlite dbHelper;
+    /*private SQLiteDatabase db;*/
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -82,7 +78,8 @@ public class HomeFragment extends Fragment {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
-        dbHelper = new Creatsqlite(getActivity(), "UserStore.db", null, 1);
+        /*String database_path= getDatabasePath("UserStore.db").toString();
+        db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);*/
         mDrawerLayout = (DrawerLayout) getView().findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) getView().findViewById(R.id.nav_design);
         imageButton=(ImageButton)getView().findViewById(R.id.imageButton);

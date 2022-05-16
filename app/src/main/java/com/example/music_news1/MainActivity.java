@@ -10,7 +10,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.music_news1.databinding.ActivityMainBinding;
 
+import com.example.music_news1.tools.MyDatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //写入数据库到SD卡
+        MyDatabaseHelper myHelper = new MyDatabaseHelper(MainActivity.this);
+        try {
+            myHelper.CopyDBFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

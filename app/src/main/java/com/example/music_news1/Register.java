@@ -13,12 +13,13 @@ import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
 
-    private Creatsqlite dbHelper;
+    private SQLiteDatabase  db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        dbHelper = new Creatsqlite(this, "UserStore.db", null, 1);
+        String database_path=getDatabasePath("UserStore.db").toString();
+        db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
     }
 
     public void register(View view){
@@ -41,7 +42,6 @@ public class Register extends AppCompatActivity {
     }
 
     public int saveUser(String user,String pwd,String name){
-        SQLiteDatabase db= dbHelper.getWritableDatabase();
         int i;
         if(user!=null){
             Cursor cursor = db.rawQuery("select * from user where username=?", new String[]{user});
