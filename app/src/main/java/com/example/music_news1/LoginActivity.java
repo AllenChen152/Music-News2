@@ -14,12 +14,14 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Creatsqlite dbHelper;
+    private SQLiteDatabase  db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        dbHelper = new Creatsqlite(this, "UserStore.db", null, 1);
+        //连接到数据库
+        String database_path=getDatabasePath("UserStore.db").toString();
+        db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
     }
 
     public void regis(View view){
@@ -36,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
             ed.putString("username",user);
             ed.commit();
             startActivity(intent);
+            Toast toast=Toast.makeText(LoginActivity.this,"登陆成功！！！！",Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM,0,0);
+            toast.show();
         }
         else {
             Toast toast=Toast.makeText(LoginActivity.this,"输入的账号密码错误！！！！",Toast.LENGTH_SHORT);
@@ -44,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     public boolean login(String username,String password) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql = "select * from user where username=? and password=?";
         Cursor cursor = db.rawQuery(sql, new String[] {username, password});
         if (cursor.moveToFirst()) {
