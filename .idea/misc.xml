@@ -42,9 +42,16 @@
         <entry key="..\:/AndroidWork/MusicNews1/app/src/main/res/menu/toolbar.xml" value="0.33" />
         <entry key="..\:/android-workspace/Music-News/app/src/main/res/drawable-v24/ic_zan.xml" value="0.119" />
         <entry key="..\:/android-workspace/Music-News/app/src/main/res/drawable/ic_comment.xml" value="0.118" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/activity_follow.xml" value="0.27447916666666666" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/activity_hotlist.xml" value="0.1334853090172239" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/activity_newsdetail.xml" value="0.2078125" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/activity_person.xml" value="0.264" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/activity_register.xml" value="0.27447916666666666" />
         <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/item_view.xml" value="0.28145424836601307" />
-        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/main.xml" value="0.22" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/main.xml" value="0.264" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/nav_header.xml" value="0.27447916666666666" />
+        <entry key="..\:/android-workspace/Music-News/app/src/main/res/layout/one.xml" value="0.27447916666666666" />
         <entry key="..\:/android-workspace/Music-News2/app/src/main/res/drawable/shape.xml" value="0.1645" />
         <entry key="..\:/android-workspace/Music-News2/app/src/main/res/drawable/shape1.xml" value="0.1645" />
         <entry key="..\:/android-workspace/Music-News2/app/src/main/res/layout/activity_follow.xml" value="0.264" />
