@@ -44,8 +44,14 @@ import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.DataCleanManager;
 import com.example.music_news1.tools.MyReceiver;
 import com.google.android.material.navigation.NavigationView;
+import com.youth.banner.Banner;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
+import com.youth.banner.indicator.CircleIndicator;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -66,6 +72,7 @@ public class HomeFragment extends Fragment {
     private SeekBar seekBar;
     private boolean hasStart = false;
     /*private SQLiteDatabase db;*/
+    List<Integer> list = new ArrayList();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -111,6 +118,24 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+        //图片轮播
+        initDate();
+        Banner mbanner=(Banner) getView().findViewById(R.id.imageView2);
+        Banner banner = mbanner.setAdapter(new BannerImageAdapter<Integer>(list) {
+            @Override
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+                holder.imageView.setImageResource(data);
+            }
+
+        });
+        //是否允许自动轮播
+        mbanner.isAutoLoop(true);
+        //设置指示器
+        mbanner.setIndicator(new CircleIndicator(getContext()));
+        //开始轮播
+        mbanner.start();
+
 
         news1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +187,12 @@ public class HomeFragment extends Fragment {
         textview0.setText(level + "%");
     }
 
+    private void initDate() {
+        list.add(R.drawable.ic_tu1);
+        list.add(R.drawable.bb);
+        list.add(R.drawable.cc);
+        list.add(R.drawable.dd);
+    }
 
     @SuppressLint("RestrictedApi")
     public void onStart() {
