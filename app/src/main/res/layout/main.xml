@@ -19,6 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorqbule"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -278,7 +279,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/relative1">
 
                 </LinearLayout>
-
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
@@ -288,16 +288,38 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+                <ImageView
+                    android:id="@id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/h1"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                    >
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_news_1"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbarAlwaysDrawVerticalTrack="true"
+                        />
+                </LinearLayout>
+
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape1"
-                    android:orientation="vertical"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView7">
+
 
                     <TextView
                         android:id="@+id/title"
@@ -321,54 +343,51 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent">
 
-                        <ImageView
-                            android:id="@+id/newsImage"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/eason" />
+
                     </RelativeLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_news_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape1"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_news_1">
+                <!-- <androidx.constraintlayout.widget.ConstraintLayout
+                     android:id="@+id/layout_news_2"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@drawable/shape1"
+                     android:orientation="vertical"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@+id/layout_news_1">
 
-                    <TextView
-                        android:id="@+id/textView66"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:text="港媒报陈奕迅将加盟《声声不息》其经纪人否认"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/relativeLayout22"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                     <TextView
+                         android:id="@+id/textView66"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="8dp"
+                         android:layout_marginEnd="8dp"
+                         android:text="港媒报陈奕迅将加盟《声声不息》其经纪人否认"
+                         android:textSize="30dp"
+                         android:textStyle="bold"
+                         app:layout_constraintBottom_toBottomOf="parent"
+                         app:layout_constraintEnd_toStartOf="@+id/relativeLayout22"
+                         app:layout_constraintStart_toStartOf="parent"
+                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <RelativeLayout
-                        android:id="@+id/relativeLayout22"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:background="@drawable/shape"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
+                     <RelativeLayout
+                         android:id="@+id/relativeLayout22"
+                         android:layout_width="100dp"
+                         android:layout_height="100dp"
+                         android:background="@drawable/shape"
+                         app:layout_constraintBottom_toBottomOf="parent"
+                         app:layout_constraintEnd_toEndOf="parent">
 
-                        <ImageView
-                            android:id="@+id/imageView33"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/eason2" />
-                    </RelativeLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                         <ImageView
+                             android:id="@+id/imageView33"
+                             android:layout_width="100dp"
+                             android:layout_height="100dp"
+                             android:background="@drawable/eason2" />
+                     </RelativeLayout>
+                 </androidx.constraintlayout.widget.ConstraintLayout>-->
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout

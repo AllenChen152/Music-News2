@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -40,12 +43,17 @@ import com.example.music_news1.HotList;
 import com.example.music_news1.LoginActivity;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
+import com.example.music_news1.RecyclerViewAdapter;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.DataCleanManager;
 import com.example.music_news1.tools.MyReceiver;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -61,11 +69,12 @@ public class HomeFragment extends Fragment {
 
     private MyReceiver myReceiver;
     private ConstraintLayout news1, news2;
+    private RecyclerView recycler_view;
 
     private static MediaPlayer mediaPlayer = new MediaPlayer();
     private SeekBar seekBar;
     private boolean hasStart = false;
-    /*private SQLiteDatabase db;*/
+    private SQLiteDatabase db;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -78,15 +87,14 @@ public class HomeFragment extends Fragment {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
-        /*String database_path= getDatabasePath("UserStore.db").toString();
-        db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);*/
+
         mDrawerLayout = (DrawerLayout) getView().findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) getView().findViewById(R.id.nav_design);
         imageButton=(ImageButton)getView().findViewById(R.id.imageButton);
         ImageView imageView_zan=(ImageView) getView().findViewById(R.id.imageView_zan);
         seekBar = getView().findViewById(R.id.seekbar);
-        news1 = getView().findViewById(R.id.layout_news_1);
-        news2 = getView().findViewById(R.id.layout_news_2);
+        //news1 = getView().findViewById(R.id.layout_news_1);
+        // news2 = getView().findViewById(R.id.layout_news_2);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +120,34 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        news1.setOnClickListener(new View.OnClickListener() {
+        //查询数据库新闻标题和头图
+        recycler_view=getView().findViewById(R.id.recycler_view);
+        String database_path=getContext().getDatabasePath("UserStore.db").toString();
+        db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
+        Cursor cursor=db.rawQuery("select title,photo from news ",null);
+        String[] tit=new String[cursor.getCount()];
+
+
+
+        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        if(cursor.moveToFirst()){
+            for(int j=0;j<cursor.getCount();j++) {
+                Map<String,Object> map=new HashMap<String, Object>();
+                tit[j]=cursor.getString(0);
+                map.put("title", tit[j]);
+               // map.put("photo",images[j]);
+                list.add(map);
+                cursor.moveToNext();
+                //System.out.println(tit[j]);
+            }
+        }
+
+        //ArrayAdapter adapter=new ArrayAdapter(getContext(),R.layout.news_item,tit);
+        //SimpleAdapter simpleAdapter=new SimpleAdapter(getContext(),list,R.layout.news_item,new String[]{"title"},new int[]{R.id.title});
+        recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
+        recycler_view.setAdapter(new RecyclerViewAdapter(list,tit));
+
+       /* news1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), NewsDetailActivity.class));
@@ -124,7 +159,8 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), NewsDetailActivity.class));
             }
-        });
+        });*/
+
 
         textView3=(TextView)getView().findViewById(R.id.textview3);
         textView1=(TextView)getView().findViewById(R.id.textview1);
@@ -158,6 +194,16 @@ public class HomeFragment extends Fragment {
         myReceiver.setMyListener(this::onListener);
 
     }
+
+
+  /*  public List<String> queryAll(){
+        List<String> result=new ArrayList<String>();
+        Cursor cursor=db.rawQuery("select * from news ",null);
+        while (cursor.moveToNext()){
+            result.add(cursor.getString(2)+"  "+cursor.getString(5));
+        }
+        return  result;
+    }*/
     public void onListener(String level) {
         textview0.setText(level + "%");
     }
@@ -226,7 +272,7 @@ public class HomeFragment extends Fragment {
                     case R.id.nav_clear_cache:
                         // 清除缓存
                         // Toast.makeText(MainActivity.this,"你点击了清除缓存，下步实现把",Toast.LENGTH_SHORT).show();
-                       // clearCacheData();
+                        // clearCacheData();
                         clearCacheData();
                         break;
                     case R.id.nav_switch:
