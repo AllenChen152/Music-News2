@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -40,12 +43,17 @@ import com.example.music_news1.HotList;
 import com.example.music_news1.LoginActivity;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
+import com.example.music_news1.RecyclerViewAdapter;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.DataCleanManager;
 import com.example.music_news1.tools.MyReceiver;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -65,7 +73,8 @@ public class HomeFragment extends Fragment {
     private static MediaPlayer mediaPlayer = new MediaPlayer();
     private SeekBar seekBar;
     private boolean hasStart = false;
-    /*private SQLiteDatabase db;*/
+    private SQLiteDatabase db;
+    private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -85,8 +94,7 @@ public class HomeFragment extends Fragment {
         imageButton=(ImageButton)getView().findViewById(R.id.imageButton);
         ImageView imageView_zan=(ImageView) getView().findViewById(R.id.imageView_zan);
         seekBar = getView().findViewById(R.id.seekbar);
-        news1 = getView().findViewById(R.id.layout_news_1);
-        news2 = getView().findViewById(R.id.layout_news_2);
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,19 +120,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        news1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), NewsDetailActivity.class));
-            }
-        });
-
-        news2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), NewsDetailActivity.class));
-            }
-        });
+        //
+        String database_path= getContext().getDatabasePath("UserStore.db").toString();
+        db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
+        Cursor cursor=db.rawQuery("select title from news",null);
+        recyclerView=getView().findViewById(R.id.recycler_view);
+        ArrayList<Map<String,Object>>list=new ArrayList<Map<String,Object>>();
+        String[] tit=new String[cursor.getCount()];
+        if(cursor.moveToFirst()){
+             for(int j=0;j<cursor.getCount();j++){
+                 HashMap<String, Object> map = new HashMap<String, Object>();
+                 tit[j]=cursor.getString(0);
+                 map.put("title",tit[j]);
+                 cursor.moveToNext();
+                 list.add(map);
+             }
+        }
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new RecyclerViewAdapter(list,tit));
 
         textView3=(TextView)getView().findViewById(R.id.textview3);
         textView1=(TextView)getView().findViewById(R.id.textview1);
