@@ -1,10 +1,12 @@
 package com.example.music_news1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,13 +17,25 @@ public class NewsDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newsdetail);
 
-        WebView webView = findViewById(R.id.details_content);
-
+        TextView title=(TextView)findViewById(R.id.details_title) ;
+        TextView author=(TextView)findViewById(R.id.author);
+        TextView date=(TextView)findViewById(R.id.date);
         ListView listView = findViewById(R.id.listView);
+
+        Intent intent=getIntent();
+        Bundle bundle=intent.getExtras();
+        title.setText(bundle.getString("title"));
+        author.setText(bundle.getString("author"));
+        date.setText(bundle.getString("date"));
+        int id=bundle.getInt("id");
+
+
+        WebView webView = findViewById(R.id.details_content);
+        webView.loadUrl("file:android_asset/news"+id+".html");
 
         listView.setAdapter(new CommentAdapter(this, R.layout.item_view, addComments()));
 
-        webView.loadUrl("file:android_asset/news.html");
+
     }
 
     private Comment[] addComments() {

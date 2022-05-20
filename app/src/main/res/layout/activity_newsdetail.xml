@@ -89,16 +89,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="作者名称：爱乐编辑" />
+                        android:text="作者名称：" />
+                    <TextView
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/details_name"
+                    android:layout_gravity="center_vertical"
+                    android:text="爱乐编辑" />
 
                     <TextView
                         android:id="@+id/details_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/date"
+                        android:layout_gravity="center_vertical"
+                        android:text="发布时间：" />
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="5dp"
-                        android:text="发布时间：2022/4/30" />
+                        android:text="2022/4/30" />
                 </RelativeLayout>
 
 

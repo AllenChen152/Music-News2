@@ -41,6 +41,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.music_news1.Follow;
 import com.example.music_news1.HotList;
 import com.example.music_news1.LoginActivity;
+import com.example.music_news1.MainActivity;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
 import com.example.music_news1.RecyclerViewAdapter;
@@ -120,24 +121,49 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //
+        //主页显示新闻内容和头图
         String database_path= getContext().getDatabasePath("UserStore.db").toString();
         db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
-        Cursor cursor=db.rawQuery("select title from news",null);
+        Cursor cursor=db.rawQuery("select * from news",null);
         recyclerView=getView().findViewById(R.id.recycler_view);
         ArrayList<Map<String,Object>>list=new ArrayList<Map<String,Object>>();
         String[] tit=new String[cursor.getCount()];
+        String[] author=new String[cursor.getCount()];
+        String[] date=new String[cursor.getCount()];
+        int[] id=new int[cursor.getCount()];
         if(cursor.moveToFirst()){
              for(int j=0;j<cursor.getCount();j++){
                  HashMap<String, Object> map = new HashMap<String, Object>();
-                 tit[j]=cursor.getString(0);
+                 tit[j]=cursor.getString(2);
+                 author[j]=cursor.getString(1);
+                 date[j]=cursor.getString(3);
+                 id[j]=cursor.getInt(0);
                  map.put("title",tit[j]);
                  cursor.moveToNext();
                  list.add(map);
              }
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new RecyclerViewAdapter(list,tit));
+        RecyclerViewAdapter mAdapter=new RecyclerViewAdapter(list,tit);
+        recyclerView.setAdapter(mAdapter);
+
+        //新闻具体内容
+        mAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                Intent intent=new Intent(view.getContext(), NewsDetailActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putInt("id",id[position]);
+                bundle.putString("title",tit[position]);
+                bundle.putString("author",author[position]);
+                bundle.putString("date",date[position]);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+            }
+        });
+
 
         textView3=(TextView)getView().findViewById(R.id.textview3);
         textView1=(TextView)getView().findViewById(R.id.textview1);
