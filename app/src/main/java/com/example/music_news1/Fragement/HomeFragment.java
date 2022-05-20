@@ -45,10 +45,15 @@ import com.example.music_news1.MainActivity;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
 import com.example.music_news1.RecyclerViewAdapter;
+import com.example.music_news1.favorite;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.DataCleanManager;
 import com.example.music_news1.tools.MyReceiver;
 import com.google.android.material.navigation.NavigationView;
+import com.youth.banner.Banner;
+import com.youth.banner.adapter.BannerImageAdapter;
+import com.youth.banner.holder.BannerImageHolder;
+import com.youth.banner.indicator.CircleIndicator;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -70,6 +75,7 @@ public class HomeFragment extends Fragment {
 
     private MyReceiver myReceiver;
     private ConstraintLayout news1, news2;
+    List<Integer> list = new ArrayList();
 
     private static MediaPlayer mediaPlayer = new MediaPlayer();
     private SeekBar seekBar;
@@ -121,6 +127,22 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //主页轮播
+        initDate();
+        Banner mbanner=(Banner) getView().findViewById(R.id.imageView2);
+        Banner banner = mbanner.setAdapter(new BannerImageAdapter<Integer>(list) {
+            @Override
+            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
+                holder.imageView.setImageResource(data);
+            }
+
+        });
+        //是否允许自动轮播
+        mbanner.isAutoLoop(true);
+        //设置指示器
+        mbanner.setIndicator(new CircleIndicator(getContext()));
+        //开始轮播
+        mbanner.start();
         //主页显示新闻内容和头图
         String database_path= getContext().getDatabasePath("UserStore.db").toString();
         db= SQLiteDatabase.openDatabase(database_path,null, SQLiteDatabase.ENABLE_WRITE_AHEAD_LOGGING);
@@ -200,7 +222,12 @@ public class HomeFragment extends Fragment {
     public void onListener(String level) {
         textview0.setText(level + "%");
     }
-
+    private void initDate() {
+        list.add(R.drawable.ic_tu1);
+        list.add(R.drawable.bb);
+        list.add(R.drawable.cc);
+        list.add(R.drawable.dd);
+    }
 
     @SuppressLint("RestrictedApi")
     public void onStart() {
@@ -255,7 +282,7 @@ public class HomeFragment extends Fragment {
                     case R.id.nav_favorite:
 
                         if (!user.equals("")) {
-                            Intent loveIntent = new Intent(getActivity(), Follow.class);
+                            Intent loveIntent = new Intent(getActivity(), favorite.class);
                             startActivity(loveIntent);
                         } else {
                             Intent loginIntent = new Intent(getActivity(), LoginActivity.class);

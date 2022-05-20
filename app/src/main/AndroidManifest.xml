@@ -15,6 +15,9 @@
             android:name=".Setting"
             android:exported="false" />
         <activity
+            android:name=".favorite"
+            android:exported="false" />
+        <activity
             android:name=".Follow"
             android:exported="false" />
         <activity
