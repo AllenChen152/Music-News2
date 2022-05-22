@@ -45,6 +45,7 @@ import com.example.music_news1.MainActivity;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
 import com.example.music_news1.RecyclerViewAdapter;
+import com.example.music_news1.SearchActivity;
 import com.example.music_news1.favorite;
 import com.example.music_news1.tools.ActivityCollector;
 import com.example.music_news1.tools.DataCleanManager;
@@ -83,6 +84,8 @@ public class HomeFragment extends Fragment {
     private SQLiteDatabase db;
     private RecyclerView recyclerView;
 
+    private ImageButton imageButtonSearch;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main, null, false);
@@ -101,6 +104,8 @@ public class HomeFragment extends Fragment {
         imageButton=(ImageButton)getView().findViewById(R.id.imageButton);
         ImageView imageView_zan=(ImageView) getView().findViewById(R.id.imageView_zan);
         seekBar = getView().findViewById(R.id.seekbar);
+
+        imageButtonSearch = getView().findViewById(R.id.imageButton_search);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,7 +187,6 @@ public class HomeFragment extends Fragment {
                 bundle.putString("date",date[position]);
                 intent.putExtras(bundle);
                 startActivity(intent);
-
             }
         });
 
@@ -218,6 +222,12 @@ public class HomeFragment extends Fragment {
         getActivity().registerReceiver(myReceiver, intentFilter);
         myReceiver.setMyListener(this::onListener);
 
+        imageButtonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
     }
     public void onListener(String level) {
         textview0.setText(level + "%");

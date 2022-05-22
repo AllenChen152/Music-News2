@@ -36,7 +36,30 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         ((TextView)view.findViewById(R.id.time)).setText(comments[position].getTime());
         ((TextView)view.findViewById(R.id.message)).setText(comments[position].getMessage());
         ((TextView)view.findViewById(R.id.zan)).setText(String.valueOf(comments[position].getZan()));
-        ((ImageView)view.findViewById(R.id.imageView)).setImageDrawable(getContext().getResources().getDrawable(R.drawable.ic_zan));
+
+        //已经点赞了
+        if (comments[position].isHasZan()) {
+            ((ImageView)view.findViewById(R.id.imageView)).setImageDrawable(getContext().getResources().getDrawable(R.drawable.zan2));
+        } else {
+            ((ImageView)view.findViewById(R.id.imageView)).setImageDrawable(getContext().getResources().getDrawable(R.drawable.zan));
+        }
+
+        ((ImageView)view.findViewById(R.id.imageView)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (comments[position].isHasZan()) {
+                    comments[position].setHasZan(false);
+                    comments[position].setZan(comments[position].getZan() - 1);
+                    ((ImageView)view.findViewById(R.id.imageView)).setImageDrawable(getContext().getResources().getDrawable(R.drawable.zan));
+                } else {
+                    comments[position].setHasZan(true);
+                    comments[position].setZan(comments[position].getZan() + 1);
+                    ((ImageView)view.findViewById(R.id.imageView)).setImageDrawable(getContext().getResources().getDrawable(R.drawable.zan2));
+                }
+                ((TextView)view.findViewById(R.id.zan)).setText(String.valueOf(comments[position].getZan()));
+            }
+        });
+
         return view;
     }
 }

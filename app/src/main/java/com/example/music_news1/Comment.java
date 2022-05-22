@@ -9,6 +9,8 @@ public class Comment {
 
     private int zan;
 
+    private boolean hasZan = false;
+
     public Comment(String userId, String time, String message, int zan) {
         this.userId = userId;
         this.time = time;
@@ -46,5 +48,13 @@ public class Comment {
 
     public void setZan(int zan) {
         this.zan = zan;
+    }
+
+    public boolean isHasZan() {
+        return hasZan;
+    }
+
+    public void setHasZan(boolean hasZan) {
+        this.hasZan = hasZan;
     }
 }
