@@ -26,6 +26,7 @@ public class NewsDetailActivity extends Activity {
 
     private SQLiteDatabase  db;
     private int id=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +123,28 @@ public class NewsDetailActivity extends Activity {
             }
         });
 
+
+        ImageView dianzan=(ImageView)findViewById(R.id.imageView5) ;
+        News news1=new News(tit);
+        if (news1.isHasZan()) {
+            dianzan.setImageDrawable(this.getResources().getDrawable(R.drawable.zan2));
+        } else {
+            dianzan.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_zan));
+        }
+        dianzan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (news1.isHasZan()) {
+                    news1.setHasZan(false);
+                    news1.setHeat(news1.getHeat() - 1);
+                    dianzan.setImageDrawable(getDrawable(R.drawable.ic_zan));
+                } else {
+                    news1.setHasZan(true);
+                    news1.setHeat(news1.getHeat() + 1);
+                    dianzan.setImageDrawable(getDrawable(R.drawable.zan2));
+                }
+            }
+        });
 
         WebView webView = findViewById(R.id.details_content);
         webView.loadUrl("file:android_asset/news"+id+".html");

@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/advertising"
-             />
+            />
 
 
         <!--<ImageView
@@ -104,6 +104,10 @@
                 android:text="三月新闻热榜"
                 android:textColor="#000"
                 android:textSize="20dp" />
+            <RelativeLayout
+                android:id="@+id/rl2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             <ImageButton
                 android:id="@+id/ImageButton3"
@@ -123,6 +127,7 @@
                 android:text="完整榜单"
                 android:textColor="#4F4F4F"
                 android:textSize="15dp" />
+            </RelativeLayout>
         </RelativeLayout>
 
         <LinearLayout
@@ -148,45 +153,58 @@
                     android:textColor="	#8B3A3A"
                     android:textSize="20dp" />
             </FrameLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ll1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:singleLine="true"
+                        android:text="1"
+                        android:textStyle="bold"
+                        android:textColor="#4F4F4F"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:singleLine="true"
+                        android:text="2"
+                        android:textStyle="bold"
+                        android:textColor="#4F4F4F"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:singleLine="true"
+                        android:text="3"
+                        android:textStyle="bold"
+                        android:textColor="#4F4F4F"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
                 <!--三条热度新闻-->
-                <TextView
+                <ListView
+                    android:id="@+id/heat_ListView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:ellipsize="end"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:text="1.网易云40万、TME30万原创音乐人,正在撬动行业格局"
-                    android:textColor="#4F4F4F"
-                    android:textSize="15dp" />
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/ll1"
+                    android:divider="#ffffff"></ListView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:ellipsize="end"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:text="2.听见梦想的声音！"
-                    android:textColor="#4F4F4F"
-                    android:textSize="15dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:ellipsize="end"
-                    android:maxEms="18"
-                    android:singleLine="true"
-                    android:text="3.音乐Big榜，乐队风云摇滚新锐-肆囍乐队"
-                    android:textColor="#4F4F4F"
-                    android:textSize="15dp" />
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
         <!--音乐热榜-->
         <RelativeLayout
@@ -247,10 +265,48 @@
             </FrameLayout>
 
             <LinearLayout
+                android:id="@+id/ll2"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
-                <!--三条热度新闻-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:text="1"
+                    android:textStyle="bold"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:text="2"
+                    android:textStyle="bold"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:text="3"
+                    android:textStyle="bold"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+                <!--三条热度音乐-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -258,7 +314,7 @@
                     android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:text="1.1 to 2 -Elaine-1"
+                    android:text="1 to 2 -Elaine-1"
                     android:textColor="#4F4F4F"
                     android:textSize="15dp" />
 
@@ -269,7 +325,7 @@
                     android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:text="2.平凡的一天 -毛不易！"
+                    android:text="平凡的一天 -毛不易！"
                     android:textColor="#4F4F4F"
                     android:textSize="15dp" />
 
@@ -280,7 +336,7 @@
                     android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:text="3.拥抱 -五月天"
+                    android:text="拥抱 -五月天"
                     android:textColor="#4F4F4F"
                     android:textSize="15dp" />
             </LinearLayout>
@@ -342,12 +398,49 @@
                     android:textColor="#9932CC"
                     android:textSize="20dp" />
             </FrameLayout>
+            <LinearLayout
+                android:id="@+id/ll3"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:text="1"
+                    android:textStyle="bold"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:text="2"
+                    android:textStyle="bold"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:singleLine="true"
+                    android:text="3"
+                    android:textStyle="bold"
+                    android:textColor="#4F4F4F"
+                    android:textSize="15dp" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
                 android:orientation="vertical">
-                <!--三条热度新闻-->
+                <!--三条热度圈子-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -355,7 +448,7 @@
                     android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:text="1.一曲歌曲一个故事"
+                    android:text="一曲歌曲一个故事"
                     android:textColor="#4F4F4F"
                     android:textSize="15dp" />
 
@@ -366,7 +459,7 @@
                     android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:text="2.不在深夜"
+                    android:text="不在深夜"
                     android:textColor="#4F4F4F"
                     android:textSize="15dp" />
 
@@ -377,7 +470,7 @@
                     android:ellipsize="end"
                     android:maxEms="18"
                     android:singleLine="true"
-                    android:text="3.民谣集合区"
+                    android:text="民谣集合区"
                     android:textColor="#4F4F4F"
                     android:textSize="15dp" />
             </LinearLayout>

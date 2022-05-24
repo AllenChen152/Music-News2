@@ -3,9 +3,7 @@ package com.example.music_news1;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -17,32 +15,19 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.youth.banner.Banner;
-import com.youth.banner.adapter.BannerImageAdapter;
-import com.youth.banner.holder.BannerImageHolder;
-import com.youth.banner.indicator.CircleIndicator;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-
-public class HotList extends Activity {
-
+public class NewsHotList extends AppCompatActivity {
     private Toolbar toolbar;
-    private TextView textView3,textView1,textView2;
-    List<Integer> list = new ArrayList();
     private SQLiteDatabase db;
-    private ListView heat_ListView;
-    private RelativeLayout rl;
-
+    private ListView heat_ListView1;
+    private ImageButton ib1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotlist);
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("爱乐——热榜");
+        setContentView(R.layout.activity_news_hotlist);
 
         //新闻热度排序
         String database_path= getDatabasePath("UserStore.db").toString();
@@ -78,11 +63,11 @@ public class HotList extends Activity {
                 }
             }
         }
-        heat_ListView=(ListView)findViewById(R.id.heat_ListView);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.hotlist_items,tit);
-        heat_ListView.setAdapter(adapter);
+        heat_ListView1=(ListView)findViewById(R.id.heat_ListView1);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,R.layout.newshotlist_items,tit);
+        heat_ListView1.setAdapter(adapter);
         //点击listview其中一项，显示新闻内容
-        heat_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        heat_ListView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(view.getContext(), NewsDetailActivity.class);
@@ -95,68 +80,14 @@ public class HotList extends Activity {
                 startActivity(intent);
             }
         });
-
-
-        textView3=(TextView)findViewById(R.id.textview3);
-        textView1=(TextView)findViewById(R.id.textview1);
-        textView2=(TextView)findViewById(R.id.textview2);
-        textView1.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                SharedPreferences sp=getSharedPreferences("user",MODE_PRIVATE);
-                String user=sp.getString("username","");
-                if(user.equals("")) {
-                    Intent intent = new Intent(HotList.this, LoginActivity.class);
-                    startActivity(intent);
-                }else{
-                    Intent intent = new Intent(HotList.this, Follow.class);
-                    startActivity(intent);
-                }
-
-            }
-        });
-        textView2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent1 = new Intent(HotList.this, MainActivity.class);
-                startActivity(intent1);
-            }
-        });
-        initDate();
-        Banner mbanner=(Banner) findViewById(R.id.banner);
-        Banner banner = mbanner.setAdapter(new BannerImageAdapter<Integer>(list) {
-            @Override
-            public void onBindView(BannerImageHolder holder, Integer data, int position, int size) {
-                holder.imageView.setImageResource(data);
-            }
-
-        });
-        //是否允许自动轮播
-        mbanner.isAutoLoop(true);
-        //设置指示器
-        mbanner.setIndicator(new CircleIndicator(this));
-        //开始轮播
-        mbanner.start();
-
-        //完整榜单
-
-        rl=findViewById(R.id.rl2);
-        rl.setOnClickListener(new View.OnClickListener() {
+        ib1=findViewById(R.id.ib1);
+        ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setContentView(R.layout.activity_news_hotlist);
-                Intent intent1 = new Intent(HotList.this, NewsHotList.class);
+                Intent intent1 = new Intent(NewsHotList.this, HotList.class);
                 startActivity(intent1);
-
             }
         });
     }
-    private void initDate() {
-        list.add(R.drawable.aaa);
-        list.add(R.drawable.bbb);
-        list.add(R.drawable.ccc);
-        list.add(R.drawable.ddd);
-    }
 
-    public void fin1(View view){
-        setContentView(R.layout.activity_hotlist);
     }
-}
