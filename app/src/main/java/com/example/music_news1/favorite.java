@@ -48,4 +48,7 @@ public class favorite extends Activity {
             }
         });
     }
+    public void imgback(View view){
+        finish();
+    }
 }
