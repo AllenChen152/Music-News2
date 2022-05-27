@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.example.music_news1.Follow;
 import com.example.music_news1.LoginActivity;
 import com.example.music_news1.R;
 import com.example.music_news1.Setting;
+import com.example.music_news1.favorite;
 import com.example.music_news1.tools.ImageRound;
 
 public class PerenFragement extends Fragment {
@@ -51,6 +53,8 @@ public class PerenFragement extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
+        SharedPreferences sp=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String user=sp.getString("username","");
 
         ImageRound Alogin=(ImageRound) getView().findViewById(R.id.ImageView2);
         Alogin.setOnClickListener(new View.OnClickListener() {
@@ -80,13 +84,27 @@ public class PerenFragement extends Fragment {
         guan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sp=getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
-                String user=sp.getString("username","");
+
                 if(user.equals("")) {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent(getActivity(), Follow.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        ImageButton imb=(ImageButton) getView().findViewById(R.id.ImageButton);
+        imb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(user.equals("")) {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(getActivity(), "请先登录！！", Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(getActivity(), favorite.class);
                     startActivity(intent);
                 }
             }
