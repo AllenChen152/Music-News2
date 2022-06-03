@@ -118,7 +118,6 @@ public class NewsDetailActivity extends Activity {
                         listView.setAdapter(new CommentAdapter(NewsDetailActivity.this, R.layout.item_view, addComments()));
                         Toast.makeText(NewsDetailActivity.this, "评论成功", Toast.LENGTH_SHORT).show();
                     }
-
                 }
             }
         });

@@ -1,15 +1,18 @@
 package com.example.music_news1.Fragement;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -42,6 +45,8 @@ import com.example.music_news1.Follow;
 import com.example.music_news1.HotList;
 import com.example.music_news1.LoginActivity;
 import com.example.music_news1.MainActivity;
+import com.example.music_news1.MediaPlayerCallback;
+import com.example.music_news1.MediaService;
 import com.example.music_news1.NewsDetailActivity;
 import com.example.music_news1.R;
 import com.example.music_news1.RecyclerViewAdapter;
@@ -78,13 +83,54 @@ public class HomeFragment extends Fragment {
     private ConstraintLayout news1, news2;
     List<Integer> list = new ArrayList();
 
-    private static MediaPlayer mediaPlayer = new MediaPlayer();
     private SeekBar seekBar;
     private boolean hasStart = false;
     private SQLiteDatabase db;
     private RecyclerView recyclerView;
 
     private ImageButton imageButtonSearch;
+
+    private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            MediaService service = (MediaService) ((MediaService.MyBinder) iBinder).getService();
+            imageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (service.getMediaPlayerStatus()) {
+                        service.toPause();
+                        imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play));
+                    } else {
+                        if (hasStart) service.toStart();
+                        else service.toPlay(new MediaPlayerCallback() {
+                            @Override
+                            public void onPrepared(int max) {
+                                hasStart = true;
+                                imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
+                                seekBar.setMax(max);
+                            }
+
+                            @Override
+                            public void onUpdate(int current) {
+                                //注意更新ui界面需要切换到主线程
+                                handler.sendEmptyMessage(1);
+                                Message msg = new Message();
+                                msg.what = 1;
+                                msg.arg1 = current;
+                                handler.sendMessage(msg);
+                            }
+                        });
+                        imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -107,19 +153,6 @@ public class HomeFragment extends Fragment {
 
         imageButtonSearch = getView().findViewById(R.id.imageButton_search);
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.pause();
-                    imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play));
-                } else {
-                    if (hasStart) mediaPlayer.start();
-                    else toPlay();
-                    imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
-                }
-            }
-        });
         //点赞切换
         final int[] i = {0};
         imageView_zan.setOnClickListener(new View.OnClickListener() {
@@ -228,6 +261,8 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), SearchActivity.class));
             }
         });
+
+        getActivity().bindService(new Intent(getActivity(), MediaService.class), conn, Context.BIND_AUTO_CREATE);
     }
     public void onListener(String level) {
         textview0.setText(level + "%");
@@ -401,49 +436,6 @@ public class HomeFragment extends Fragment {
         return true;
     }
 
-    /**
-     * 播放组件
-     */
-    private void toPlay(){
-
-        try {
-            mediaPlayer.reset();
-
-            mediaPlayer.setDataSource(getResources().openRawResourceFd(R.raw.music1));
-            mediaPlayer.prepareAsync();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    mediaPlayer.start();
-                    hasStart = true;
-                    imageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
-                    seekBar.setMax(mediaPlayer.getDuration());
-                }
-            });
-
-        }catch (Exception e){ }
-
-        //开启新线程获取实时播放位置
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                try {
-                    while (true){
-                        sleep(1000);    //为了防止内存占用过多，需要休眠
-                        if (mediaPlayer.isPlaying()){
-                            //注意更新ui界面需要切换到主线程
-                            handler.sendEmptyMessage(1);
-                        }
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
-    }
-
     //主线程更新ui界面
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
@@ -452,9 +444,7 @@ public class HomeFragment extends Fragment {
             super.handleMessage(msg);
             switch (msg.what){
                 case 1:
-                    if (0 != mediaPlayer.getCurrentPosition()){
-                        seekBar.setProgress(mediaPlayer.getCurrentPosition());
-                    }
+                    seekBar.setProgress(msg.arg1);
                     break;
             }
         }
@@ -464,4 +454,10 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }*/
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unbindService(conn);
+    }
 }
